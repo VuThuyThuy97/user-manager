@@ -1,12 +1,12 @@
 app.service('ApiService', Service);
-var BASE_URL = 'http://user.dev.sflow.me:3000';
-//var BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'http://user.dev.sflow.me:3000';
+// var BASE_URL = 'http://localhost:3000';
 
-var CREAT_USER = '/user/new';
-var EDIT_USER = '/user/edit';
-var DELETE_USER = '/user/delete';
-var LIST_USER = '/user/list';
-var INFO_USER = '/user/info';
+const CREAT_USER = '/user/new';
+const EDIT_USER = '/user/edit';
+const DELETE_USER = '/user/delete';
+const LIST_USER = '/user/list';
+const INFO_USER = '/user/info';
 
 function post($http, route, payload, callback) {
     let request = {
@@ -32,8 +32,7 @@ function Service($http) {
             if (err) {
                 callback(err, null);
             } else {
-                console.log(response);
-                if (response.data.result) {
+                if (response.data.code == 200) {
                     console.log("Success");
                     callback(false, response.data.content);
                 } else {

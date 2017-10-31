@@ -1,9 +1,10 @@
 app.controller('leftCtrl', leftCtrl);
-function leftCtrl (userService) {
+
+function leftCtrl() {
     var vm = this;
     // this.currentUser = userService.currentUser();
     this.currentUser = {
         name: 'Monkey D. Luffy',
-        image :'public/img/luffy.png'
+        image: 'public/img/luffy.png'
     }
 }
