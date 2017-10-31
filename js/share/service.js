@@ -1,6 +1,6 @@
 app.service('ApiService', Service);
-// var BASE_URL = 'http://user.dev.sflow.me:3000';
-var BASE_URL = 'http://localhost:3000';
+var BASE_URL = 'http://user.dev.sflow.me:3000';
+//var BASE_URL = 'http://localhost:3000';
 
 var CREAT_USER = '/user/new';
 var EDIT_USER = '/user/edit';
