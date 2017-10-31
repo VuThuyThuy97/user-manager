@@ -1,9 +1,10 @@
 app.controller('navCtrl', navCtrl);
-function navCtrl ($scope, userService, $uibModal) {
+
+function navCtrl($scope, $uibModal) {
     var vm = this;
     this.addUser = function () {
         var modalInstance = $uibModal.open({
-           templateUrl: 'view/component/addUserModal/addUser.html',
+            templateUrl: 'view/component/addUserModal/addUser.html',
             controller: 'addUserCtrl as mvm'
         });
     }
