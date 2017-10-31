@@ -4,10 +4,5 @@
 
 # IntelliJ project files
 .idea
-*.iml
 out
 gen
-.gitignore
-.idea/dbnavigator.xml
-.idea/inspectionProfiles/
-.idea/vcs.xml
