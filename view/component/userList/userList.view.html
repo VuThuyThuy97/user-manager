@@ -1,0 +1,15 @@
+<ul>
+    <li ng-repeat="user in cvm.users" class="col-xs-12">
+        <i class="fa fa-user"></i>
+        <div style="display: inline-block" class="padding-left-1-em width-60-px"><h4>{{user.name}}</h4></div>
+        <span class="label label-success option-label" ng-show="user.active">Active</span>
+        <span class="label label-danger option-label" ng-hide="user.active">Deactive</span>
+
+            <div class="pull-right" style="display: inline-block">
+                <button class="btn btn-default width-40-px" ng-click="cvm.delete(user)"><i class="glyphicon glyphicon-trash"></i><span ng-show='false' class="padding-left-half-em ">Delete</span></button>
+                <button class="btn btn-default width-40-px" ng-click="cvm.activeToggle(user)" ng-show="user.active"><i class="fa fa-lock"></i><span ng-show='false'  class="padding-left-half-em ">Lock</span></button>
+                <button class="btn btn-default width-40-px" ng-click="cvm.activeToggle(user)" ng-hide="user.active"><i class="fa fa-unlock-alt"></i><span ng-show='false'  class="padding-left-half-em">Unlock</span></button>
+            </div>
+    </li>
+
+</ul>

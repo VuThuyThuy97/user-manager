@@ -1,0 +1,34 @@
+ul {
+    list-style: none;
+    padding: 0;
+}
+user-list li {
+    border-bottom: 1px solid #cccccc;
+    margin-bottom: 2px
+;
+}
+user-list button {
+    margin-top: 3px;
+}
+.padding-left-1-em {
+    padding-left: 1em;
+}
+.padding-left-half-em {
+    padding-left: 0.5em;
+}
+.width-40-px {
+    min-width: 40px;
+}
+.width-60-px {
+    min-width: 60px;
+}
+.option-label {
+    display: inline-block;
+    min-width: 56px;
+}
+.color-green {
+    color: greenyellow;
+}
+.margin-left-230px {
+    margin-left: 230px;
+}
