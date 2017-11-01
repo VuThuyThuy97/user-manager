@@ -1,14 +1,13 @@
+// var DialogUtils = require('../../dialogs/DialogUtil');
 app.controller('userListCtrl', contentCtrl);
 
-function contentCtrl($timeout, ApiService, $uibModal) {
+function contentCtrl($timeout, $scope, $http, ApiService, ModalService) {
     var vm = this;
     vm.users = new Array();
     this.$onInit = function () {
         ApiService.getListUser({}, function (err, success) {
             $timeout(function () {
-                ApiService.users = success;
-                vm.users = ApiService.users;
-                console.log(ApiService.users);
+                vm.users = success;
             });
         });
     };
@@ -18,8 +17,6 @@ function contentCtrl($timeout, ApiService, $uibModal) {
                 var i = vm.users.indexOf(user);
                 if (i !== -1) {
                     vm.users.splice(i, 1);
-                } else {
-                    console.log(i);
                 }
             }
         });
@@ -44,14 +41,36 @@ function contentCtrl($timeout, ApiService, $uibModal) {
                 }
             });
         }
-    };
+    }
     vm.editUser = function (user) {
         console.log(user);
-        ApiService.userToEdit = user;
-        var modalInstance = $uibModal.open({
-            templateUrl: 'view/component/editUserModal/editUser.html',
-            controller: 'editUserCtrl as evm'
+        console.log("OPEN DIALOG TO EDIT");
+
+        function ModalController($scope, close) {
+            let self = this;
+            this.aboutApp = {
+                version: "1.0x",
+                build: "2017-08-01"
+            }
+            this.onCancelButtonClicked = function () {
+                close(null);
+            }
+        }
+
+        ModalService.showModal({
+            templateUrl: 'view/dialogs/error-dialog/error-dialog-modal.html',
+            controller: ModalController,
+            controllerAs: 'wiModal'
+        }).then(function (modal) {
+            modal.element.modal();
+            modal.close.then(function (data) {
+                $('.modal-backdrop').remove();
+                $('body').removeClass('modal-open');
+
+                if (data) {
+                    callback(data);
+                }
+            })
         });
     }
-}
-;
+};
