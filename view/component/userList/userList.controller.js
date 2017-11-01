@@ -16,10 +16,12 @@ function contentCtrl($timeout, $scope, $http, ApiService, ModalService, DialogSe
             if (response) {
                 ApiService.deleteUser({idUser: user.idUser}, function (err, success) {
                     if (!err) {
-                        var i = vm.users.indexOf(user);
-                        if (i !== -1) {
-                            vm.users.splice(i, 1);
-                        }
+                        DialogService.successDialog("Successful", ModalService, function () {
+                            var i = vm.users.indexOf(user);
+                            if (i !== -1) {
+                                vm.users.splice(i, 1);
+                            }
+                        });
                     }
                 });
             }
@@ -35,39 +37,40 @@ function contentCtrl($timeout, $scope, $http, ApiService, ModalService, DialogSe
         }
         DialogService.confirmDialog(title, message, ModalService, function (response) {
             if (response) {
-                if (user.status === 'Actived') {
-                    let payload = user;
-                    payload.status = 'Inactive'
-                    ApiService.editUser(user, function (err, success) {
-                        if (!err) {
-                            // console.log(success);
-                            user.status = 'Inactive';
-                        }
-                    });
-                } else {
-                    let payload = user;
-                    payload.status = 'Actived'
-                    ApiService.editUser(user, function (err, success) {
-                        if (!err) {
-                            user.status = 'Actived';
-                            // console.log(success);
-                        }
-                    });
-                }
+                DialogService.successDialog("Done", ModalService, function () {
+                    if (user.status === 'Actived') {
+                        let payload = user;
+                        payload.status = 'Inactive'
+                        ApiService.editUser(user, function (err, success) {
+                            if (!err) {
+                                // console.log(success);
+                                user.status = 'Inactive';
+                            }
+                        });
+                    } else {
+                        let payload = user;
+                        payload.status = 'Actived'
+                        ApiService.editUser(user, function (err, success) {
+                            if (!err) {
+                                user.status = 'Actived';
+                                // console.log(success);
+                            }
+                        });
+                    }
+                });
             }
         });
 
     }
     vm.editUser = function (user) {
-        console.log("OPEN DIALOG TO EDIT");
-        // DialogService.errorDialog("LOI NA", ModalService, function () {
-        //
-        // });
-        DialogService.editUser($scope, ModalService, ApiService, user, function (response) {
-            var i = vm.users.indexOf(user);
-            if (i != -1) {
-                vm.users[i] = response;
-            }
+        DialogService.editUser(ModalService, ApiService, user, function (response) {
+            DialogService.successDialog("Done", ModalService, function () {
+                var i = vm.users.indexOf(user);
+                if (i != -1) {
+                    vm.users[i] = response;
+                }
+            });
+
         });
     }
 };

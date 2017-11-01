@@ -1,12 +1,12 @@
 <div ng-controller="homeCtrl">
-        <navigation></navigation>
-        <div class="left-nav">
-            <left-nav></left-nav>
-        </div>
-        <h3 class="content-header margin-left-230px padding-left-1-em">Users
-            <i class="glyphicon glyphicon-plus pull-right padding-right-1-em" ng-click="vm.popupModal()"></i>
-        </h3>
-        <div class="content margin-left-230px">
-            <user-list></user-list>
-        </div>
+    <navigation></navigation>
+    <div class="left-nav">
+        <left-nav></left-nav>
+    </div>
+    <h3 class="content-header margin-left-230px padding-left-1-em">Users Management
+        <i class="glyphicon glyphicon-plus pull-right padding-right-1-em" ng-click="vm.addUser()"></i>
+    </h3>
+    <div class="content margin-left-230px">
+        <user-list></user-list>
+    </div>
 </div>

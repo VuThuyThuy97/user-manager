@@ -37,6 +37,7 @@ function Service($http) {
                     callback(false, response.data.content);
                 } else {
                     console.log("ERRRRRRRRR");
+                    callback(response.data.reason, response.data.content);
                     //dialog loi
                 }
             }
@@ -47,10 +48,11 @@ function Service($http) {
             if (err) {
                 callback(err, null);
             } else {
-                if (response.data.content) {
+                if (response.data.code == 200) {
                     callback(false, response.data.content);
                 } else {
                     //dialog loi
+                    callback(true, response.data.content);
                 }
             }
         });
@@ -61,9 +63,10 @@ function Service($http) {
             if (err) {
                 callback(err, null);
             } else {
-                if (response.data.content) {
+                if (response.data.code == 200) {
                     callback(false, response.data.content);
                 } else {
+                    callback(response.data.reason, response.data.content);
                     //dialog loi
                 }
             }
@@ -75,9 +78,10 @@ function Service($http) {
             if (err) {
                 callback(err, null);
             } else {
-                if (response.data.content) {
+                if (response.data.code == 200) {
                     callback(false, response.data.content);
                 } else {
+                    callback(response.data.reason, response.data.content);
                     //dialog loi
                 }
             }
@@ -89,9 +93,10 @@ function Service($http) {
             if (err) {
                 callback(err, null);
             } else {
-                if (response.data.content) {
+                if (response.data.code == 200) {
                     callback(false, response.data.content);
                 } else {
+                    callback(response.data.reason, response.data.content);
                     //dialog loi
                 }
             }
