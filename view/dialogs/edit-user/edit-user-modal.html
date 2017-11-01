@@ -6,7 +6,8 @@
                         ng-click="myModal.onCancelButtonClicked()"
                         aria-hidden="true">&times;
                 </button>
-                <h4 class="modal-title"><span class="info-frp-16x16"></span>&nbsp;About Well Insight</h4>
+                <h4 class="modal-title"><span class="info-frp-16x16"></span>&nbsp;Edit User Infomation}
+                </h4>
             </div>
             <div class="modal-body">
                 <!--<div class="slider">Well Insight app</div>-->
@@ -16,7 +17,7 @@
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
                             <input type="text" class="form-control" name="username" id="username"
-                                   ng-model="myModal.user.username" />
+                                   ng-model="myModal.newUser.username"/>
                         </div>
                     </div>
                 </div>
@@ -27,7 +28,7 @@
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                             <input type="text" class="form-control" name="name" id="name"
-                                   ng-model="myModal.user.fullname"/>
+                                   ng-model="myModal.newUser.fullname"/>
                         </div>
                     </div>
                 </div>
@@ -38,7 +39,7 @@
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
                             <input type="text" class="form-control" name="email" id="email"
-                                   ng-model="myModal.user.email"/>
+                                   ng-model="myModal.newUser.email"/>
                         </div>
                     </div>
                 </div>
@@ -49,7 +50,8 @@
                         <div class="input-group {{myModal.hasErrorPassword}}">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                             <input type="password" class="form-control" name="new_password" id="new_password"
-                                   placeholder="Enter your new Password" ng-model="myModal.newUser.newPassword"/>
+                                   placeholder="Enter your new Password" ng-model="myModal.newUser.newPassword"
+                                   ng-change="myModal.checkPassword()"/>
                         </div>
                     </div>
                 </div>
@@ -60,12 +62,13 @@
                         <div class="input-group {{myModal.hasErrorRePassword}}">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                             <input type="password" class="form-control" name="new_confirm" id="new_confirm"
-                                   placeholder="Confirm your new Password" ng-model="myModal.newUser.newConfirm"/>
+                                   placeholder="Confirm your new Password" ng-model="myModal.newUser.newConfirm"
+                                   ng-change="myModal.checkPassword()"/>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group ">
+                <div class=" form-group ">
                     <button class="btn btn-primary btn-lg btn-block login-button"
                             ng-click="myModal.updateButtonClick()">Update
                     </button>
@@ -73,13 +76,6 @@
 
             </div>
             <div class="modal-footer">
-                <!--<div class="footer-left">-->
-                <!--<p>Version: {{wiModal.aboutApp.version}}</p>-->
-                <!--<p>Build: {{wiModal.aboutApp.build}}</p>-->
-                <!--</div>-->
-                <!--<div class="footer-right">-->
-                <!--<p><a href="">Support: E3-UET-VNU</a></p>-->
-                <!--</div>-->
             </div>
         </div>
     </div>

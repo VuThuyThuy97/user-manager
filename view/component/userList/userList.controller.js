@@ -1,4 +1,4 @@
-// var DialogUtils = require('../../dialogs/DialogUtil');
+"use strict";
 app.controller('userListCtrl', contentCtrl);
 
 function contentCtrl($timeout, $scope, $http, ApiService, ModalService, DialogService) {
@@ -12,39 +12,62 @@ function contentCtrl($timeout, $scope, $http, ApiService, ModalService, DialogSe
         });
     };
     vm.delete = function (user) {
-        ApiService.deleteUser({idUser: user.idUser}, function (err, success) {
-            if (!err) {
-                var i = vm.users.indexOf(user);
-                if (i !== -1) {
-                    vm.users.splice(i, 1);
-                }
+        DialogService.confirmDialog("User Management", "Delete user " + user.username + "?", ModalService, function (response) {
+            if (response) {
+                ApiService.deleteUser({idUser: user.idUser}, function (err, success) {
+                    if (!err) {
+                        var i = vm.users.indexOf(user);
+                        if (i !== -1) {
+                            vm.users.splice(i, 1);
+                        }
+                    }
+                });
             }
         });
     };
     vm.activeToggle = function (user) {
+        let title = "User Management";
+        let message = "";
         if (user.status === 'Actived') {
-            let payload = user;
-            payload.status = 'Inactive'
-            ApiService.editUser(user, function (err, success) {
-                if (!err) {
-                    console.log(success);
-                    user.status = 'Inactive';
-                }
-            });
-        } else {
-            let payload = user;
-            payload.status = 'Actived'
-            ApiService.editUser(user, function (err, success) {
-                if (!err) {
-                    user.status = 'Actived';
-                    console.log(success);
-                }
-            });
+            message = "Deactive this user?";
+        } else if (user.status === 'Inactive') {
+            message = "Active this user?";
         }
+        DialogService.confirmDialog(title, message, ModalService, function (response) {
+            if (response) {
+                if (user.status === 'Actived') {
+                    let payload = user;
+                    payload.status = 'Inactive'
+                    ApiService.editUser(user, function (err, success) {
+                        if (!err) {
+                            // console.log(success);
+                            user.status = 'Inactive';
+                        }
+                    });
+                } else {
+                    let payload = user;
+                    payload.status = 'Actived'
+                    ApiService.editUser(user, function (err, success) {
+                        if (!err) {
+                            user.status = 'Actived';
+                            // console.log(success);
+                        }
+                    });
+                }
+            }
+        });
+
     }
     vm.editUser = function (user) {
-        console.log(user);
         console.log("OPEN DIALOG TO EDIT");
-        DialogService.editUser($scope, ModalService, ApiService, user);
+        // DialogService.errorDialog("LOI NA", ModalService, function () {
+        //
+        // });
+        DialogService.editUser($scope, ModalService, ApiService, user, function (response) {
+            var i = vm.users.indexOf(user);
+            if (i != -1) {
+                vm.users[i] = response;
+            }
+        });
     }
 };

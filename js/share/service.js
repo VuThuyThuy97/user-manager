@@ -33,7 +33,7 @@ function Service($http) {
                 callback(err, null);
             } else {
                 if (response.data.code == 200) {
-                    console.log("Success");
+                    // console.log("Success");
                     callback(false, response.data.content);
                 } else {
                     console.log("ERRRRRRRRR");
@@ -97,7 +97,7 @@ function Service($http) {
             }
         });
     }
-    myServices.userToEdit = new Object();
-    myServices.users = new Array();
+    // myServices.userToEdit = new Object();
+    // myServices.users = new Array();
     return myServices;
 }
