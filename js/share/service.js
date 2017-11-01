@@ -47,21 +47,21 @@ function Service($http) {
             if (err) {
                 callback(err, null);
             } else {
-                if (response.data.result) {
+                if (response.data.content) {
                     callback(false, response.data.content);
                 } else {
                     //dialog loi
                 }
             }
         });
-    }
+    };
 
     myServices.editUser = function (payload, callback) {
         post($http, EDIT_USER, payload, function (err, response) {
             if (err) {
                 callback(err, null);
             } else {
-                if (response.data.result) {
+                if (response.data.content) {
                     callback(false, response.data.content);
                 } else {
                     //dialog loi
@@ -75,7 +75,7 @@ function Service($http) {
             if (err) {
                 callback(err, null);
             } else {
-                if (response.data.result) {
+                if (response.data.content) {
                     callback(false, response.data.content);
                 } else {
                     //dialog loi
@@ -89,7 +89,7 @@ function Service($http) {
             if (err) {
                 callback(err, null);
             } else {
-                if (response.data.result) {
+                if (response.data.content) {
                     callback(false, response.data.content);
                 } else {
                     //dialog loi
@@ -97,5 +97,7 @@ function Service($http) {
             }
         });
     }
+    myServices.userToEdit = new Object();
+    myServices.users = new Array();
     return myServices;
 }

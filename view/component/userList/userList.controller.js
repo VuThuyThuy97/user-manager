@@ -1,12 +1,14 @@
 app.controller('userListCtrl', contentCtrl);
 
-function contentCtrl($timeout, $scope, $http, ApiService) {
+function contentCtrl($timeout, ApiService, $uibModal) {
     var vm = this;
     vm.users = new Array();
     this.$onInit = function () {
         ApiService.getListUser({}, function (err, success) {
             $timeout(function () {
-                vm.users = success;
+                ApiService.users = success;
+                vm.users = ApiService.users;
+                console.log(ApiService.users);
             });
         });
     };
@@ -16,6 +18,8 @@ function contentCtrl($timeout, $scope, $http, ApiService) {
                 var i = vm.users.indexOf(user);
                 if (i !== -1) {
                     vm.users.splice(i, 1);
+                } else {
+                    console.log(i);
                 }
             }
         });
@@ -40,9 +44,14 @@ function contentCtrl($timeout, $scope, $http, ApiService) {
                 }
             });
         }
-    }
+    };
     vm.editUser = function (user) {
         console.log(user);
-        console.log("OPEN DIALOG TO EDIT");
+        ApiService.userToEdit = user;
+        var modalInstance = $uibModal.open({
+            templateUrl: 'view/component/editUserModal/editUser.html',
+            controller: 'editUserCtrl as evm'
+        });
     }
-};
+}
+;
