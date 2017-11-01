@@ -1,7 +1,7 @@
 // var DialogUtils = require('../../dialogs/DialogUtil');
 app.controller('userListCtrl', contentCtrl);
 
-function contentCtrl($timeout, $scope, $http, ApiService, ModalService) {
+function contentCtrl($timeout, $scope, $http, ApiService, ModalService, DialogService) {
     var vm = this;
     vm.users = new Array();
     this.$onInit = function () {
@@ -45,32 +45,6 @@ function contentCtrl($timeout, $scope, $http, ApiService, ModalService) {
     vm.editUser = function (user) {
         console.log(user);
         console.log("OPEN DIALOG TO EDIT");
-
-        function ModalController($scope, close) {
-            let self = this;
-            this.aboutApp = {
-                version: "1.0x",
-                build: "2017-08-01"
-            }
-            this.onCancelButtonClicked = function () {
-                close(null);
-            }
-        }
-
-        ModalService.showModal({
-            templateUrl: 'view/dialogs/error-dialog/error-dialog-modal.html',
-            controller: ModalController,
-            controllerAs: 'wiModal'
-        }).then(function (modal) {
-            modal.element.modal();
-            modal.close.then(function (data) {
-                $('.modal-backdrop').remove();
-                $('body').removeClass('modal-open');
-
-                if (data) {
-                    callback(data);
-                }
-            })
-        });
+        DialogService.editUser($scope, ModalService, ApiService, user);
     }
 };

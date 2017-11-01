@@ -3,22 +3,83 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close"
-                        ng-click="wiModal.onCancelButtonClicked()"
+                        ng-click="myModal.onCancelButtonClicked()"
                         aria-hidden="true">&times;
                 </button>
                 <h4 class="modal-title"><span class="info-frp-16x16"></span>&nbsp;About Well Insight</h4>
             </div>
             <div class="modal-body">
-                <div class="slider">Well Insight app</div>
+                <!--<div class="slider">Well Insight app</div>-->
+                <div class="form-group">
+                    <label for="username" class="cols-sm-2 control-label">Username</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="username" id="username"
+                                   ng-model="myModal.user.username" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name" class="cols-sm-2 control-label">Full Name</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="name" id="name"
+                                   ng-model="myModal.user.fullname"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="cols-sm-2 control-label">Email</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="email" id="email"
+                                   ng-model="myModal.user.email"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="cols-sm-2 control-label">New Password</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group {{myModal.hasErrorPassword}}">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" name="new_password" id="new_password"
+                                   placeholder="Enter your new Password" ng-model="myModal.newUser.newPassword"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm" class="cols-sm-2 control-label">Confirm New Password</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group {{myModal.hasErrorRePassword}}">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" name="new_confirm" id="new_confirm"
+                                   placeholder="Confirm your new Password" ng-model="myModal.newUser.newConfirm"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <button class="btn btn-primary btn-lg btn-block login-button"
+                            ng-click="myModal.updateButtonClick()">Update
+                    </button>
+                </div>
+
             </div>
             <div class="modal-footer">
-                <div class="footer-left">
-                    <p>Version: {{wiModal.aboutApp.version}}</p>
-                    <p>Build: {{wiModal.aboutApp.build}}</p>
-                </div>
-                <div class="footer-right">
-                    <p><a href="">Support: E3-UET-VNU</a></p>
-                </div>
+                <!--<div class="footer-left">-->
+                <!--<p>Version: {{wiModal.aboutApp.version}}</p>-->
+                <!--<p>Build: {{wiModal.aboutApp.build}}</p>-->
+                <!--</div>-->
+                <!--<div class="footer-right">-->
+                <!--<p><a href="">Support: E3-UET-VNU</a></p>-->
+                <!--</div>-->
             </div>
         </div>
     </div>
