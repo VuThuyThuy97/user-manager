@@ -11,6 +11,10 @@ function contentCtrl($timeout, $scope, $http, ApiService, ModalService, DialogSe
             } else {
                 $timeout(function () {
                     vm.users = success;
+                    let admin = vm.users.filter(function (user) {
+                        return user.username == "admin";
+                    });
+                    vm.users.splice(vm.users.indexOf(admin[0]), 1);
                 });
             }
         });

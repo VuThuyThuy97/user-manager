@@ -35,7 +35,7 @@ function DialogUtils() {
                         if (!err) {
                             console.log("CALLBACK ", response);
                             close(response);
-                            callback(response);
+                            // callback(response);
                         } else {
                             close(null);
                             myDialogs.errorDialog("Failed!", ModalService);

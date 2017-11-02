@@ -4,7 +4,7 @@ function leftCtrl() {
     var vm = this;
     // this.currentUser = userService.currentUser();
     this.currentUser = {
-        name: 'Monkey D. Luffy',
-        image: 'public/img/luffy.png'
+        name: 'Well Insight Admin',
+        image: 'public/img/logo.png'
     }
 }

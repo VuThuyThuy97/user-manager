@@ -9,8 +9,8 @@ function navCtrl($scope, $uibModal) {
         });
     }
     // vm.currentUser = userService.currentUser();
-    vm.currentUser = {
-        name: 'Monkey D. Luffy',
-        image: 'public/img/luffy.png'
+    this.currentUser = {
+        name: 'Well Insight Admin',
+        image: 'public/img/logo.png'
     }
 }
