@@ -1,0 +1,10 @@
+.content-header {
+    background-color: #f0f0f0;
+    margin-top: 0;
+    padding-top: 0.75em;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #ccc;
+}
+.padding-right-1-em {
+    padding-right: 1em;
+}

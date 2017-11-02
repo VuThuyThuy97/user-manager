@@ -1,0 +1,87 @@
+<div class="modal fade" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        ng-click="myModal.onCancelButtonClicked()"
+                        aria-hidden="true">&times;
+                </button>
+                <h4 class="modal-title"><span class="info-frp-16x16"></span>&nbsp;Add User
+                </h4>
+            </div>
+            <div class="modal-body">
+                <!--<div class="slider">Well Insight app</div>-->
+                <div class="form-group">
+                    <label for="username" class="control-label">Username</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" name="username" id="username"
+                               ng-model="myModal.user.username"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name" class="control-label">Full Name</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" name="name" id="name"
+                               ng-model="myModal.user.fullname"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="control-label">Email</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" name="email" id="email"
+                               ng-model="myModal.user.email"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="control-label">Password</label>
+                    <div class="input-group {{myModal.hasErrorPassword}}">
+                        <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                        <input type="password" class="form-control" name="password" id="password"
+                               placeholder="Enter your new Password" ng-model="myModal.user.password"
+                               ng-change="myModal.checkPassword()"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm" class="control-label">Confirm Password</label>
+                    <div class="input-group {{myModal.hasErrorRePassword}}">
+                        <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                        <input type="password" class="form-control" name="confirm" id="confirm"
+                               placeholder="Confirm your new Password" ng-model="myModal.user.confirm"
+                               ng-change="myModal.checkPassword()"/>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="role" class="control-label">Role</label>
+                    <div class="input-group width-170-px">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-qrcode"
+                                                           aria-hidden="true"></i></span>
+                        <select class="form-control" name="role" id="role" ng-model="myModal.user.role"
+                                ng-init="myModal.user.role='2'">
+                            <option value="1">Administrator</option>
+                            <option value="2">User</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class=" form-group ">
+                    <button class="btn btn-primary btn-lg btn-block login-button"
+                            ng-click="myModal.updateButtonClick()">Add
+                    </button>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>

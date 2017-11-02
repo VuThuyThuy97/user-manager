@@ -1,0 +1,23 @@
+{
+  "name": "user-manager",
+  "version": "1.0.0",
+  "description": "a tiny app to mange users",
+  "main": "app.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VuThuyThuy97/user-manager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VuThuyThuy97/user-manager/issues"
+  },
+  "homepage": "https://github.com/VuThuyThuy97/user-manager#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-rsync": "0.0.8"
+  }
+}
