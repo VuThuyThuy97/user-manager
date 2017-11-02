@@ -32,14 +32,15 @@ function DialogUtils() {
             this.updateButtonClick = function () {
                 if (isPassToUpdate == 0 || isPassToUpdate == 1) {
                     ApiService.editUser(newUser, function (err, response) {
-                        console.log(err, response);
                         if (!err) {
-                            console.log(response);
+                            console.log("CALLBACK ", response);
+                            close(response);
                             callback(response);
                         } else {
+                            close(null);
                             myDialogs.errorDialog("Failed!", ModalService);
                         }
-                        close(null);
+
                     });
                 } else {
                     alert("Password is not match");
@@ -130,11 +131,13 @@ function DialogUtils() {
                 if (isPassToUpdate) {
                     ApiService.addUser(this.user, function (err, response) {
                         if (!err) {
+                            close(response);
                             callback(response);
                         } else {
+                            close(null);
                             myDialogs.errorDialog("Failed!", ModalService);
                         }
-                        close(null);
+
                     });
                 } else {
                     alert("Password is not match");
@@ -175,7 +178,7 @@ function DialogUtils() {
             modal.close.then(function (data) {
                 $('.modal-backdrop').remove();
                 $('body').removeClass('modal-open');
-                if (callback) callback();
+                callback();
             })
         });
     }

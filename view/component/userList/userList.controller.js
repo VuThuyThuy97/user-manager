@@ -6,9 +6,13 @@ function contentCtrl($timeout, $scope, $http, ApiService, ModalService, DialogSe
     vm.users = new Array();
     this.$onInit = function () {
         ApiService.getListUser({}, function (err, success) {
-            $timeout(function () {
-                vm.users = success;
-            });
+            if (err) {
+                DialogService.errorDialog("Error while listig users", ModalService);
+            } else {
+                $timeout(function () {
+                    vm.users = success;
+                });
+            }
         });
     };
     vm.delete = function (user) {
@@ -27,33 +31,27 @@ function contentCtrl($timeout, $scope, $http, ApiService, ModalService, DialogSe
             }
         });
     };
-    vm.activeToggle = function (user) {
+    vm.activeToggle = function (userInfo) {
+        let user = userInfo;
         let title = "User Management";
         let message = "";
+        let status = "";
         if (user.status === 'Actived') {
             message = "Deactive this user?";
+            status = "Inactive";
         } else if (user.status === 'Inactive') {
             message = "Active this user?";
+            status = "Actived";
         }
-        DialogService.confirmDialog(title, message, ModalService, function (response) {
-            if (response) {
-                DialogService.successDialog("Done", ModalService, function () {
-                    if (user.status === 'Actived') {
-                        let payload = user;
-                        payload.status = 'Inactive'
-                        ApiService.editUser(user, function (err, success) {
-                            if (!err) {
-                                // console.log(success);
-                                user.status = 'Inactive';
-                            }
-                        });
-                    } else {
-                        let payload = user;
-                        payload.status = 'Actived'
-                        ApiService.editUser(user, function (err, success) {
-                            if (!err) {
-                                user.status = 'Actived';
-                                // console.log(success);
+        DialogService.confirmDialog(title, message, ModalService, function (yes) {
+            if (yes) {
+                user.status = status;
+                ApiService.editUser(user, function (err, response) {
+                    if (!err) {
+                        DialogService.successDialog("Done", ModalService, function () {
+                            var i = vm.users.indexOf(user);
+                            if (i != -1) {
+                                vm.users[i] = response;
                             }
                         });
                     }
@@ -64,13 +62,15 @@ function contentCtrl($timeout, $scope, $http, ApiService, ModalService, DialogSe
     }
     vm.editUser = function (user) {
         DialogService.editUser(ModalService, ApiService, user, function (response) {
-            DialogService.successDialog("Done", ModalService, function () {
-                var i = vm.users.indexOf(user);
-                if (i != -1) {
-                    vm.users[i] = response;
-                }
-            });
-
+            if (response) {
+                DialogService.successDialog("Done", ModalService, function () {
+                    console.log("AAAAAAAAAAAAAAAAAA");
+                    var i = vm.users.indexOf(user);
+                    if (i != -1) {
+                        vm.users[i] = response;
+                    }
+                });
+            }
         });
     }
 };
