@@ -16,11 +16,14 @@ user-list button {
 .padding-left-half-em {
     padding-left: 0.5em;
 }
-.width-40-px {
-    min-width: 40px;
+.width-110-px {
+    width: 110px;
 }
-.width-60-px {
-    width: 80px;
+.width-120-px {
+    width: 120px;
+}
+.width-80-px {
+    width:80px;
 }
 .option-label {
     display: inline-block;
@@ -31,4 +34,17 @@ user-list button {
 }
 .margin-left-230px {
     margin-left: 230px;
+}
+.width-170-px {
+    width: 170px;
+}
+.text-align-left {
+    text-align: left;
+}
+.username {
+    vertical-align: middle;
+    overflow: hidden;
+}
+.margin-left-1-em {
+    margin-left: 1em;
 }
