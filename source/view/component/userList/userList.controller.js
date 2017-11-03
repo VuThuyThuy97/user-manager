@@ -11,6 +11,9 @@ function contentCtrl($timeout, $scope, $http, ApiService, ModalService, DialogSe
             } else {
                 $timeout(function () {
                     vm.users = success;
+                    $(document).ready(function () {
+                        $('#example').DataTable();
+                    });
                     // let admin = vm.users.filter(function (user) {
                     //     return user.username == "admin";
                     // });

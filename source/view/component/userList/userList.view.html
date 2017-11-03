@@ -1,9 +1,12 @@
 <ul>
     <li ng-repeat="user in cvm.users" class="col-xs-12">
         <i class="fa fa-user"></i>
-        <div style="display: inline-block" class="padding-left-1-em width-120-px username"><h4>{{user.username}}</h4></div>
-        <span class="label label-success option-label margin-left-1-em" ng-show="user.status == 'Actived'">Actived</span>
-        <span class="label label-danger option-label margin-left-1-em" ng-show="user.status == 'Inactive'">Inactive</span>
+        <div style="display: inline-block" class="padding-left-1-em width-120-px username"><h4>{{user.username}}</h4>
+        </div>
+        <span class="label label-success option-label margin-left-1-em"
+              ng-show="user.status == 'Actived'">Actived</span>
+        <span class="label label-danger option-label margin-left-1-em"
+              ng-show="user.status == 'Inactive'">Inactive</span>
 
         <div class="pull-right" style="display: inline-block">
             <button class="btn btn-default width-40-px" ng-click="cvm.editUser(user)">
@@ -25,3 +28,9 @@
     </li>
 
 </ul>
+
+<!--<table id="example" class="display" cellspacing="0" width="100%">-->
+    <!--<tr ng-repeat="user in cvm.users">-->
+        <!--<td>{{user.username}}</td>-->
+    <!--</tr>-->
+<!--</table>-->
