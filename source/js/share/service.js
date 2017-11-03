@@ -10,7 +10,7 @@ const LIST_USER = '/user/list';
 const INFO_USER = '/user/info';
 
 function post($http, route, payload, callback) {
-    payload.token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJjNGNhNDIzOGEwYjkyMzgyMGRjYzUwOWE2Zjc1ODQ5YiIsImlhdCI6MTUwOTU5MjQwMiwiZXhwIjoxODI1MDMzNzY4fQ.q0qbwJwbMcAT-MeH7Xhm3Y6ONIaUH5_jv__kvD_GHbU'
+    payload.token = 'f82e62d7c3ea69cc12b5cdb8d621dab6';
     let request = {
         url: BASE_URL + route,
         method: 'POST',
