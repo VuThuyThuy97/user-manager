@@ -6,15 +6,20 @@
     background-color: #3c8dbc;
     color: white;
 }
+
 .main-header a {
     color: white;
+    position: fixed;
 }
+
 .width-25-px {
     width: 25px;
 }
+
 .font-size-09-em {
     font-size: 0.9em;
-               }
+}
+
 .main-header .navbar {
     -webkit-transition: margin-left 0.3s ease-in-out;
     -o-transition: margin-left 0.3s ease-in-out;
@@ -29,14 +34,17 @@
 .layout-top-nav .main-header .navbar {
     margin-left: 0;
 }
+
 .logo {
     background-color: #367fa9;
     color: white;
 }
+
 .main-header .navbar-custom-menu,
 .main-header .navbar-right {
     float: right;
 }
+
 .main-header .sidebar-toggle {
     float: left;
     background-color: transparent;
@@ -106,33 +114,40 @@
 .main-header .navbar-brand {
     color: #fff;
 }
-.main-header li>a {
+
+.main-header li > a {
     height: 50px;
 }
+
 .navbar-toggle {
     color: #fff;
     border: 0;
     margin: 0;
     padding: 15px 15px;
 }
+
 .main-header a:hover {
     background-color: #367fa9;
     text-decoration: none;
 }
-.main-header li>a:hover {
+
+.main-header li > a:hover {
     background-color: #367fa9;
     text-decoration: none;
 }
-.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
     background-color: #367fa9;
 }
+
 .user-dropdown {
     padding: 1em;
     background-color: #3c8dbc;
     position: absolute;
     right: 0;
-    left:auto;
+    left: auto;
 }
+
 .user-dropdown a {
     background-color: #3c8dbc;
     height: auto;

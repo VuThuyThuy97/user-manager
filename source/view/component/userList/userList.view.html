@@ -1,36 +1,77 @@
-<ul>
-    <li ng-repeat="user in cvm.users" class="col-xs-12">
-        <i class="fa fa-user"></i>
-        <div style="display: inline-block" class="padding-left-1-em width-120-px username"><h4>{{user.username}}</h4>
-        </div>
-        <span class="label label-success option-label margin-left-1-em"
-              ng-show="user.status == 'Actived'">Actived</span>
-        <span class="label label-danger option-label margin-left-1-em"
-              ng-show="user.status == 'Inactive'">Inactive</span>
+<!--<ul>-->
+<!--<li ng-repeat="user in cvm.users" class="col-xs-12">-->
+<!--<i class="fa fa-user"></i>-->
+<!--<div style="display: inline-block" class="padding-left-1-em width-120-px username"><h4>{{user.username}}</h4>-->
+<!--</div>-->
+<!--<span class="label label-success option-label margin-left-1-em"-->
+<!--ng-show="user.status == 'Actived'">Actived</span>-->
+<!--<span class="label label-danger option-label margin-left-1-em"-->
+<!--ng-show="user.status == 'Inactive'">Inactive</span>-->
 
-        <div class="pull-right" style="display: inline-block">
-            <button class="btn btn-default width-40-px" ng-click="cvm.editUser(user)">
-                <i class="glyphicon glyphicon-pencil"></i>
-            </button>
-            <button class="btn btn-default width-40-px" ng-click="cvm.delete(user)">
-                <i class="glyphicon glyphicon-trash"></i>
-                <span ng-show='false' class="padding-left-half-em ">Delete</span>
-            </button>
-            <button class="btn btn-default width-110-px text-align-left" ng-click="cvm.activeToggle(user)"
-                    ng-show="user.status == 'Actived'">
-                <i class="fa fa-lock"></i><span ng-show='true' class="padding-left-1-em ">Deactive</span>
-            </button>
-            <button class="btn btn-default width-110-px text-align-left" ng-click="cvm.activeToggle(user)"
-                    ng-show="user.status == 'Inactive'">
-                <i class="fa fa-unlock-alt"></i><span ng-show='true' class="padding-left-1-em">Active</span>
-            </button>
-        </div>
-    </li>
+<!--<div class="pull-right" style="display: inline-block">-->
+<!--<button class="btn btn-default width-40-px" ng-click="cvm.editUser(user)">-->
+<!--<i class="glyphicon glyphicon-pencil"></i>-->
+<!--</button>-->
+<!--<button class="btn btn-default width-40-px" ng-click="cvm.delete(user)">-->
+<!--<i class="glyphicon glyphicon-trash"></i>-->
+<!--<span ng-show='false' class="padding-left-half-em ">Delete</span>-->
+<!--</button>-->
+<!--<button class="btn btn-default width-110-px text-align-left" ng-click="cvm.activeToggle(user)"-->
+<!--ng-show="user.status == 'Actived'">-->
+<!--<i class="fa fa-lock"></i><span ng-show='true' class="padding-left-1-em ">Deactive</span>-->
+<!--</button>-->
+<!--<button class="btn btn-default width-110-px text-align-left" ng-click="cvm.activeToggle(user)"-->
+<!--ng-show="user.status == 'Inactive'">-->
+<!--<i class="fa fa-unlock-alt"></i><span ng-show='true' class="padding-left-1-em">Active</span>-->
+<!--</button>-->
+<!--</div>-->
+<!--</li>-->
 
-</ul>
+<!--</ul>-->
+<table id="example" class="display" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    </tfoot>
+    <tbody>
+    <tr ng-repeat="user in cvm.users">
+        <td class="padding-left-1-em width-120-px"><i class="fa fa-user"></i> {{user.username}}</td>
+        <td>
+            <span class="label label-success option-label margin-left-1-em"
+                  ng-show="user.status == 'Actived'">Actived</span>
+            <span class="label label-danger option-label margin-left-1-em"
+                  ng-show="user.status == 'Inactive'">Inactive</span>
+        </td>
+        <td>
+            <div class="pull-right" style="display: inline-block">
+                <button class="btn btn-default width-40-px" ng-click="cvm.editUser(user)">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </button>
+                <button class="btn btn-default width-40-px" ng-click="cvm.delete(user)">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span ng-show='false' class="padding-left-half-em ">Delete</span>
+                </button>
+                <button class="btn btn-default width-110-px text-align-left" ng-click="cvm.activeToggle(user)"
+                        ng-show="user.status == 'Actived'">
+                    <i class="fa fa-lock"></i><span ng-show='true' class="padding-left-1-em ">Deactive</span>
+                </button>
+                <button class="btn btn-default width-110-px text-align-left" ng-click="cvm.activeToggle(user)"
+                        ng-show="user.status == 'Inactive'">
+                    <i class="fa fa-unlock-alt"></i><span ng-show='true' class="padding-left-1-em">Active</span>
+                </button>
+            </div>
+        </td>
+    </tr>
 
-<!--<table id="example" class="display" cellspacing="0" width="100%">-->
-    <!--<tr ng-repeat="user in cvm.users">-->
-        <!--<td>{{user.username}}</td>-->
-    <!--</tr>-->
-<!--</table>-->
+    </tbody>
+</table>

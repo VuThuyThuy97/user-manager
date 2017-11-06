@@ -4,24 +4,37 @@ app.controller('userListCtrl', contentCtrl);
 function contentCtrl($timeout, $scope, $http, ApiService, ModalService, DialogService) {
     var vm = this;
     vm.users = new Array();
-    this.$onInit = function () {
-        ApiService.getListUser({}, function (err, success) {
-            if (err) {
-                DialogService.errorDialog("Error while listig users", ModalService);
-            } else {
+    // this.$onInit = function () {
+    //     ApiService.getListUser({}, function (err, success) {
+    //         if (err) {
+    //             DialogService.errorDialog("Error while listig users", ModalService);
+    //         } else {
+    //             // $timeout(function () {
+    //             vm.users = success;
+    //             console.log(vm.users);
+    //             angular.element(document).ready(function () {
+    //                 $(document).ready(function () {
+    //                     $('#example').DataTable({});
+    //                 });
+    //             });
+    //             // });
+    //         }
+    //     });
+    // };
+    ApiService.getListUser({}, function (err, success) {
+        if (err) {
+
+        } else {
+            angular.element(document).ready(function () {
+                vm.users = success;
                 $timeout(function () {
-                    vm.users = success;
                     $(document).ready(function () {
-                        $('#example').DataTable();
+                        $('#example').DataTable({});
                     });
-                    // let admin = vm.users.filter(function (user) {
-                    //     return user.username == "admin";
-                    // });
-                    // vm.users.splice(vm.users.indexOf(admin[0]), 1);
                 });
-            }
-        });
-    };
+            })
+        }
+    });
     vm.delete = function (user) {
         DialogService.confirmDialog("User Management", "Delete user " + user.username + "?", ModalService, function (response) {
             if (response) {
@@ -71,7 +84,6 @@ function contentCtrl($timeout, $scope, $http, ApiService, ModalService, DialogSe
         DialogService.editUser(ModalService, ApiService, user, function (response) {
             if (response) {
                 DialogService.successDialog("Done", ModalService, function () {
-                    console.log("AAAAAAAAAAAAAAAAAA");
                     var i = vm.users.indexOf(user);
                     if (i != -1) {
                         vm.users[i] = response;
