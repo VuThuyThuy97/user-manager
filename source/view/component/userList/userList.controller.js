@@ -56,12 +56,12 @@ function contentCtrl($timeout, $scope, $http, ApiService, ModalService, DialogSe
         let title = "User Management";
         let message = "";
         let status = "";
-        if (user.status === 'Actived') {
+        if (user.status === 'Active') {
             message = "Deactive this user?";
             status = "Inactive";
         } else if (user.status === 'Inactive') {
             message = "Active this user?";
-            status = "Actived";
+            status = "Active";
         }
         DialogService.confirmDialog(title, message, ModalService, function (yes) {
             if (yes) {
