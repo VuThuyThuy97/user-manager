@@ -21,3 +21,13 @@ gulp.task('deploy-dev', function () {
             port: 2221
         }));
 });
+
+gulp.task('deploy-production', function () {
+    return gulp.src("./source/**/*")
+        .pipe(rsync({
+            root: "source/",
+            hostname: "wi.i2g.cloud",
+            destination: "/opt/user-manager-client/",
+            port: 22
+        }));
+});

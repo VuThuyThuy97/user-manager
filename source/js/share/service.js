@@ -1,8 +1,8 @@
 app.service('ApiService', Service);
 // const BASE_URL = 'http://user.dev.sflow.me:3000';
 // var BASE_URL = 'http://localhost:2999';
-// var BASE_URL = 'http://dev.sflow.me';
-var BASE_URL = 'http://login.sflow.me';
+var BASE_URL = 'http://login.i2g.cloud';
+// var BASE_URL = 'http://login.sflow.me';
 
 const CREAT_USER = '/user/new';
 const EDIT_USER = '/user/edit';
